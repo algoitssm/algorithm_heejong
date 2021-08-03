@@ -75,20 +75,27 @@ while i < T:
 
     # 4) 결국 for문을 남발해봤다..
 
+    # 시작부터 1글자 2글자 .... 10글자를 저장
     for j in range(1, 11):
         possible_patterns.append(st[:j])
 
-    # 길이가 긴 패턴부터 하면 마지막에 저장되는 패턴이 가장 짧음
-    for possible_pattern in possible_patterns[::-1]:            # 리스트 역순 정렬을 계속 [:-1]로 실수함
+    for possible_pattern in possible_patterns:
+
+        chk = 0     # 패턴을 찾으면 1로 변경
 
         # 바로 다음 요소 뿐 아니라 문자열 끝까지 확인
-        for k in range(len(st) // len(possible_pattern)):       # pattern길이가 2면 (15-1)번, 3이면 (10-1)번, ... , 확인
+        for k in range(len(st) // len(possible_pattern)):       # pattern길이가 2면 (30//2-1)번, 3이면 (30//3-1)번, ... , check
             if possible_pattern != st[k * len(possible_pattern):(k + 1) * len(possible_pattern)]:
                 break
-        else:
-            patt = possible_pattern
         
-        patt_length = len(patt)
+        # 검증이 전부 끝났으면
+        else:
+            chk = 1
+            patt = possible_pattern     # 패턴으로 추가
+        
+        if chk:
+            patt_length = len(patt)
+            break
 
     print(f'#{i+1} {patt_length}')
     i += 1

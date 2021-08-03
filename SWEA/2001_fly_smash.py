@@ -10,6 +10,7 @@ while i <= T:
         list_N.append(list(map(int, input().split())))
         j += 1
     
+    # 파리채로 칠 수 있는 횟수는 cnt * cnt
     cnt = N - M + 1
 
     

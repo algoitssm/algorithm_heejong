@@ -3,15 +3,15 @@
 def pascal_tri(n):
     ans = 1
 
-    if n == 1:
-        return [ans]
-    elif n == 2:
-        return [ans, ans]
-    else:
-        ans_list = pascal_tri(2)
-        idx = 1
-        while idx < n-1:
-            ans_list.insert(idx, pascal_tri(n-1)[idx-1] + pascal_tri(n-1)[idx])
+    if n == 1:              # 1이면
+        return [ans]        # [1] 반환
+    elif n == 2:            # 2이면
+        return [ans, ans]   # [1, 1] 반환
+    else:                   # 그 외에는
+        ans_list = pascal_tri(2)    # [1,1]
+        idx = 1                     # 인덱스 변수 설정 (1부터 시작)
+        while idx < n-1:            # 인덱스 변수를 하나씩 증가시킬 때마다
+            ans_list.insert(idx, pascal_tri(n-1)[idx-1] + pascal_tri(n-1)[idx]) # 파스칼 삼각형 윗 행의 두 수를 더해서 삽입
             idx += 1
         return ans_list
 

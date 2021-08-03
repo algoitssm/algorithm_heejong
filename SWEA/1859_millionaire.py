@@ -43,21 +43,25 @@ i = 0
 while i < T:
     N = int(input())
     my_list = list(map(int, input().split()))
-    my_list = my_list[::-1]
-    max_num = my_list[0]
-    my_sum = 0
+    
+    my_list = my_list[::-1]     # 역순으로 정렬
+    max_num = my_list[0]        # 처음 최대값을 초기화
+    my_sum = 0                  # 합을 0으로 초기화
 
     for j in range(1, len(my_list)):
-        if max_num > my_list[j]:
-            my_sum += max_num - my_list[j]
-        else:
-            max_num = my_list[j]
+
+        if max_num > my_list[j]:            # 처음 최대값이 다음 항보다 크면
+            my_sum += max_num - my_list[j]  # 그 차이만큼 누적
+        else:                               # 아니면
+            max_num = my_list[j]            # 최대값을 변경
 
     print('#{} {}'.format(i+1, my_sum))
     i += 1
 
 
 # Error 골칫덩어리
+# print부분 수정 필요
+
 # T = int(input())
 # while T > 0:
 #     N = int(input())
