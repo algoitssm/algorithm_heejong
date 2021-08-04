@@ -4,7 +4,6 @@ i = 1
 while i <= N:
     cnt = 0
 
-    # i를 str으로 바꾸어서 하나씩 접근
     j = i
     while j > 0:
         rem = j % 10 
