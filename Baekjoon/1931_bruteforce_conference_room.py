@@ -1,3 +1,5 @@
+# https://www.acmicpc.net/problem/1931
+
 N = int(input())
 
 meetings = []

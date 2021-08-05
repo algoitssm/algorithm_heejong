@@ -1,3 +1,5 @@
+# https://www.acmicpc.net/problem/11047
+
 N, K = map(int, input().split())
 
 i = 0
