@@ -12,6 +12,7 @@ while i < n:
 input_num_list.sort(reverse=True)
 my_max = input_num_list[0]
 j = 0
+
 while j < n:
     if my_max < input_num_list[-1] * len(input_num_list):
         my_max = input_num_list[-1] * len(input_num_list)

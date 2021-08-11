@@ -23,7 +23,6 @@ petroleum_prices = list(map(int, input().split()))
 # print(ans)
 
 
-
 # Recursive
 
 # def save_money(dist_list, price_list, ans = 0):
@@ -38,6 +37,7 @@ petroleum_prices = list(map(int, input().split()))
 
 # print(save_money(distances, petroleum_prices))
 
+
 ans = 0
 
 price = petroleum_prices[0]
@@ -45,8 +45,7 @@ price = petroleum_prices[0]
 for idx in range(len(distances)):
     ans += price * distances[idx]
 
-    if price > petroleum_prices[idx+1]:
-        price = petroleum_prices[idx+1]
+    if price > petroleum_prices[idx + 1]:
+        price = petroleum_prices[idx + 1]
 
 print(ans)
-    
