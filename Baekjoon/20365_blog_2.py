@@ -1,12 +1,13 @@
 # https://www.acmicpc.net/problem/20365
 
+# Unsolved
+
 N = int(input())
 
 color_list = list(input())
 
 
-# Recursive TimeError
-
+# 시간초과
 
 def change_color(lst, cnt=1):
     start = 0
