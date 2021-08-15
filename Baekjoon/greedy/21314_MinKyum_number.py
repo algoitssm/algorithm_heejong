@@ -59,5 +59,6 @@ def min_minkyum(string: str):
 # print(min_minkyum('MMKMMMMM'))  # 1051000
 # print(max_minkyum('MMMMKKK'))   # 5000055
 # print(min_minkyum('MMMMKKK'))   # 1000555
+
 print(max_minkyum(input_str))
 print(min_minkyum(input_str))

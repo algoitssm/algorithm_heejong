@@ -2,14 +2,26 @@
 
 # 55점
 
+import sys
+
 N = int(input())
 
-spots = list(map(int, input().split()))
+# spots = list(map(int, input().split()))
+spots = tuple(map(int, sys.stdin.readline().split()))
+# print(spots)
 
 # 2 가지 케이스를 생각
 
 # 1) 벌 - 꿀통 - 벌
-honey_sum1 = sum(spots[1:-1]) + max(spots)
+
+# honey_sum1 = sum(spots[1:-1]) + max(spots)
+max_spot = spots[0]
+honey_sum1 = 0
+for idx in range(1, N - 1):
+    if max_spot < spots[idx]:
+        max_spot = spots[idx]
+    honey_sum1 += spots[idx]
+honey_sum1 += max_spot
 
 
 # 2) 벌 - 벌 - 꿀통

@@ -5,9 +5,16 @@
 N = int(input())
 
 color_list = list(input())
+cnt = 1
 
+for idx in len(1, range(color_list)):
+    if color_list.count('R') > N//2:    # R이 더 많을 때
+
+        if True:
+            pass
 
 # 시간초과
+
 
 def change_color(lst, cnt=1):
     start = 0
