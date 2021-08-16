@@ -2,7 +2,9 @@
 
 # Unsolved
 
-input_str = input()
+import sys
+
+input_str = sys.stdin.readline()
 
 # Recursion Error
 # def max_minkyum(string: str):
@@ -51,6 +53,14 @@ def min_minkyum(string: str):
     return int(string)
 
 
+# print(max_minkyum('M'))
+# print(min_minkyum('M'))
+# print(max_minkyum('K'))
+# print(min_minkyum('K'))
+# print(max_minkyum('MK'))
+# print(min_minkyum('MK'))
+# print(max_minkyum('KM'))
+# print(min_minkyum('KM'))
 # print(max_minkyum('MKM'))       # 501
 # print(min_minkyum('MKM'))       # 151
 # print(max_minkyum('MKKMMK'))    # 505500
