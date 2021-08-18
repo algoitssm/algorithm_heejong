@@ -1,5 +1,10 @@
 # https://www.acmicpc.net/problem/20365
 
+# 1. BBRBRBBR -> BRBRBR
+# 2. 길이가 홀수일 때와 짝수일 때 구분
+# 3. 홀수일 때는 반으로 접음 => 길이 // 2 + 1
+# 4. 짝수일 때는 제일 끝을 하나 떼고 홀수처럼 생각
+
 import sys
 
 N = int(sys.stdin.readline())
@@ -8,13 +13,14 @@ color_list = list(sys.stdin.readline())
 
 cnt = 1
 
+# 1.
 for idx in range(1, N):
     if color_list[idx] != color_list[idx-1]:
         cnt += 1
 
-if cnt & 1:
+if cnt & 1:                 # BRBRB -> BRRRB -> BRBRB
     print(cnt // 2 + 1)
-else:
+else:                       # BRBRBR
     print((cnt-1) // 2 + 1 + 1)
 
 
