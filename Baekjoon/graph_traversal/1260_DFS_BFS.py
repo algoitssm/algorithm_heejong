@@ -19,8 +19,8 @@ def bfs(v):
         v = dq.popleft()
         stack_bfs.append(v)
 
-        for w in range(len(edges[v])):
-            if not visited_bfs[edges[v][w]]:
+        for w in range(len(edges[v])):          # v에 연결점이 없으면 그냥 통과
+            if not visited_bfs[edges[v][w]]:    #
                 visited_bfs[edges[v][w]] = 1
                 dq.append(edges[v][w])
 
