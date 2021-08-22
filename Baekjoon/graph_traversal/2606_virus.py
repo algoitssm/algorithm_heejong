@@ -57,5 +57,5 @@ while i != 0:
 
 
 # print(visited)
-print(sum(visited)-1)  # 1번 컴퓨터는 뺌
-# print(cnt-1)
+print(sum(visited)-1)   # 1번 컴퓨터는 뺌
+# print(cnt-1)      # cnt를 쓰는 방법?
