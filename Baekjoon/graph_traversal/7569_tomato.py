@@ -77,8 +77,3 @@ while True:
         break
 
 print(all_riped(day))
-
-# if all(sum(grid, start=[])):
-#     print(day)
-# else:
-#     print(-1)

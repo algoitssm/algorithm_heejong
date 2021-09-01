@@ -13,7 +13,7 @@ def dfs(v):
         if 0 <= new_row < N and 0 <= new_col < N:
             if grid[new_row][new_col] == 1:
                 if not visited[new_row][new_col]:
-                    visited[new_row][new_col] = cnt
+                    visited[new_row][new_col] = 1
                     dfs((new_row, new_col))
                     cnt += 1
 
@@ -32,12 +32,12 @@ dr = (-1, 0, 1, 0)
 dc = (0, 1, 0, -1)
 
 section = 0
-cnt_list = list()
+cnt_list = []
 for r in range(N):
     for c in range(N):
         if grid[r][c] and not visited[r][c]:
             cnt = 1
-            visited[r][c] = cnt
+            visited[r][c] = 1
             result = dfs((r, c))
             section += 1
             cnt_list.append(result)
