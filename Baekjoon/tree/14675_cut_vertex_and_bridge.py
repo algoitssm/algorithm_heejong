@@ -1,84 +1,110 @@
 # https://www.acmicpc.net/problem/14675
 
-# TimeOver
-
 import sys
-from copy import deepcopy
+# from copy import deepcopy
+# from collections import deque
 input = sys.stdin.readline
 
+# 트리가 아니라 그래프가 주어질 경우 판단
+# def bfs(v, lst, n):
+#     cnt = 1
+#     q = deque()
+#     q.append(v)
 
-def dfs(v, lst):
-    visited[v] = 1
+#     visited[v] = 1
 
-    for e in lst:
-        if not visited[e]:
-            break
-    else:
-        return
+#     while q:
 
-    for child in new_tree[v]:
-        if not visited[child]:
-            dfs(child, lst)
+#         if cnt == n:
+#             return True
 
+#         v = q.popleft()
 
-def are_they_connected(lst):
-    v = lst[0]
+#         for child in new_tree[v]:
+#             if not visited[child]:
+#                 q.append(child)
+#                 if child in lst:
+#                     cnt += 1
 
-    dfs(v, lst)
-    # print(visited)
-
-    my_sum = 0
-    for node in lst:
-        my_sum += visited[node]
-
-    if my_sum == len(lst):
-        return True
-    return False
+#     return False
 
 
-def cut_vertex(k):
-
-    for e in new_tree[k]:
-        new_tree[e].remove(k)
-
-    check = new_tree[k]
-
-    return are_they_connected(check)
+# def are_they_connected(lst):
+#     v = lst[0]
+#     n = len(lst)
+#     return bfs(v, lst, n)
 
 
-def cut_bridge(k):
+# def cut_vertex(k):
 
-    n1, n2 = bridge_tag[k-1]
-    new_tree[n1].remove(n2)
-    new_tree[n2].remove(n1)
+#     for e in new_tree[k]:
+#         new_tree[e].remove(k)
 
-    return are_they_connected((n1, n2))
+#     check = new_tree[k]
+
+#     return are_they_connected(check)
+
+
+# def cut_bridge(k):
+
+#     n1, n2 = bridge_tag[k-1]
+#     new_tree[n1].remove(n2)
+#     new_tree[n2].remove(n1)
+
+#     return are_they_connected((n1, n2))
+
+
+# N = int(input())
+
+# tree = [[] for _ in range(N+1)]
+# bridge_tag = []
+# for _ in range(N-1):
+#     p, c = map(int, input().split())
+#     tree[p].append(c)
+#     tree[c].append(p)
+#     bridge_tag.append((p, c))
+
+# # print(tree)
+# q = int(input())
+
+# for _ in range(q):
+#     new_tree = deepcopy(tree)
+#     t, k = map(int, input().split())
+#     visited = [0 for _ in range(N+1)]
+
+#     if t == 1:
+#         chk = cut_vertex(k)   # 입력으로 주어지는 정보는 트리임이 보장되므로 check는 무조건 존재
+#     elif t == 2:
+#         chk = cut_bridge(k)
+
+#     if chk:
+#         print('no')
+#     else:
+#         print('yes')
 
 
 N = int(input())
 
 tree = [[] for _ in range(N+1)]
-bridge_tag = []
+
 for _ in range(N-1):
     p, c = map(int, input().split())
     tree[p].append(c)
     tree[c].append(p)
-    bridge_tag.append((p, c))
 
-# print(tree)
 q = int(input())
 
 for _ in range(q):
-    new_tree = deepcopy(tree)
+    chk = True
     t, k = map(int, input().split())
-    visited = [0 for _ in range(N+1)]
 
-    if t == 1:
-        chk = cut_vertex(k)   # 입력으로 주어지는 정보는 트리임이 보장되므로 check는 무조건 존재
-    elif t == 2:
-        chk = cut_bridge(k)
+    if t == 1:          # 점일 때
+        if len(tree[k]) == 1:   # 연결된 간선이 하나이면
+            chk = False  # 단절점 아님
+    # elif t == 2:      # 간선일 때
+    #     chk = True    # 무조건 단절선
 
     if chk:
-        print('no')
-    else:
         print('yes')
+    else:
+        print('no')
