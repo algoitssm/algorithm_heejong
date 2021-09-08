@@ -1,21 +1,31 @@
 # https://www.acmicpc.net/problem/14675
+
+# TimeOver
+
 import sys
 from copy import deepcopy
 input = sys.stdin.readline
 
 
-def dfs(v):
+def dfs(v, lst):
     visited[v] = 1
+
+    for e in lst:
+        if not visited[e]:
+            break
+    else:
+        return
 
     for child in new_tree[v]:
         if not visited[child]:
-            dfs(child)
+            dfs(child, lst)
 
 
 def are_they_connected(lst):
     v = lst[0]
 
-    dfs(v)
+    dfs(v, lst)
+    # print(visited)
 
     my_sum = 0
     for node in lst:
@@ -28,9 +38,8 @@ def are_they_connected(lst):
 
 def cut_vertex(k):
 
-    for e in new_tree:
-        if k in e:
-            e.remove(k)
+    for e in new_tree[k]:
+        new_tree[e].remove(k)
 
     check = new_tree[k]
 

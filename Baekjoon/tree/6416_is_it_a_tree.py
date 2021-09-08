@@ -1,6 +1,9 @@
 # https://www.acmicpc.net/problem/6416
+
+# Unsolved
+
 import sys
-# input = sys.stdin.readline
+input = sys.stdin.readline
 
 
 def dfs(r):
@@ -11,6 +14,8 @@ def dfs(r):
     for child in tree[r]:
         if not cycle_check[child]:
             dfs(child)
+        else:
+            chk = False
 
     return
 
@@ -22,7 +27,7 @@ while True:
     chk = True
 
     while True:
-        input_data += list(map(int, sys.stdin.readline().rstrip().split()))
+        input_data += list(map(int, input().split()))
         if 0 in input_data:
             break
 
@@ -39,6 +44,7 @@ while True:
         tree[m].append(n)
         connected_node[m][0] += 1
         connected_node[n][1] += 1
+
         if m not in nodes:
             nodes.append(m)
         if n not in nodes:
@@ -70,7 +76,7 @@ while True:
                 chk = False
                 break
 
-    nxt_input = sys.stdin.readline().rstrip().split()
+    nxt_input = input().split()
 
     if chk:
         print('Case {} is a tree.'.format(tc))
