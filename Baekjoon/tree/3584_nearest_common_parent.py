@@ -2,6 +2,8 @@
 import sys
 sys.setrecursionlimit(100000)
 
+# 하루 2시간 잡고있던걸 담날 20분만에 해결
+
 
 def child_track(n1, n2):
     global chk
@@ -25,9 +27,13 @@ while T > 0:
         childs[p].append(c)
         parent[c].append(p)
 
-    n1, n2 = map(int, input().split())
+    # print('parent: ', parent)
+    # print('childs: ', childs)
 
-    while True:     # 트리라서 공통 부모는 무조건 존재
+    n1, n2 = map(int, input().split())
+    # print('-----')
+
+    while True:     # 트리라서 공통부모 무조건 존재
         chk = 0
         child_track(n1, n2)
 
