@@ -1,26 +1,21 @@
 # https://www.acmicpc.net/problem/1967
-# TimeError
 
 import sys
-from itertools import combinations
 sys.setrecursionlimit(100000)
 input = sys.stdin.readline
 
 
-def find_distance(a, b, cum):
-    global total
+def dfs(v):
+    global max_d
 
-    if a == b:
-        total += cum
-        return
-
-    visited[a] = 1
-
-    for c in tree[a]:
-        if not visited[c[0]]:
-            cum += c[1]
-            find_distance(c[0], b, cum)
-            cum -= c[1]
+    for n in tree[v[0]]:
+        w = n[0]
+        d = n[1]
+        if visited[w] < 0:
+            visited[w] = visited[v[0]] + d
+            if visited[w] > max_d:
+                max_d = visited[w]
+            dfs(n)
 
 
 n = int(input())
@@ -31,34 +26,15 @@ for _ in range(n-1):
     tree[p].append((c, weight))
     tree[c].append((p, weight))
 
-# print(tree)
 
-for temp in range(n, 1, -1):        # chk 부터 leaf node
-    if len(tree[temp]) > 1:
-        chk = temp + 1
-        break
+visited = [-1 for _ in range(n+1)]
+max_d = 0
+visited[1] = 0
+dfs((1, 0))
+node = visited.index(max_d)
 
-# 한 leaf node에서 시작
-leaf_node_list = [k for k in range(chk, n+1)]
-# print(leaf_node_list)
-
-K = n + 1 - chk   # leaf node 개수
-
-# my_max = 0
-# for i in range(K):      # 2개 뽑는 조합
-#     for j in range(i+1, K):
-#         visited = [0 for _ in range(n+1)]
-#         total = 0
-#         find_distance(leaf_node_list[i], leaf_node_list[j], 0)
-#         if my_max < total:
-#             my_max = total
-
-my_max = 0
-for points in combinations(leaf_node_list, 2):
-    visited = [0 for _ in range(n+1)]
-    total = 0
-    find_distance(points[0], points[1], 0)
-    if my_max < total:
-        my_max = total
-
-print(my_max)
+visited = [-1 for _ in range(n+1)]
+max_d = 0
+visited[node] = 0
+dfs((node, 0))
+print(max(visited))
