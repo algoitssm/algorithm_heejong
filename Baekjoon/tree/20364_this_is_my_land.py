@@ -12,7 +12,7 @@ for _ in range(Q):
 blocked = [0 for _ in range(N+1)]
 
 for x in x_list:
-    ans = 0
+    # ans = 0
     destination = x
     visited = 0
     # print(x)

@@ -6,7 +6,7 @@ sys.setrecursionlimit(1000000)
 input = sys.stdin.readline
 
 
-def remove_parent(v):   # 부모 제거 함수
+def remove_parent(v):   # 부모 노드 제거 함수
     visited[v] = 1
 
     for w in G[v]:
