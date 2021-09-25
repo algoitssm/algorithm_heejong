@@ -10,7 +10,7 @@ def find_max(b: list, max_choices):
 
     index_list = [i for i in range(len(b))]
 
-    for i in range(1, len(b)):  # 요소 중 1개, 2개, 3개 ... len(b)+1일 경우는 위에서 처리
+    for i in range(1, len(b)):  # 요소 중 1개, 2개, 3개 ... len(b)+1일 경우 = 전부 다 더하는 경우는 위에서 처리
 
         for case in combinations(index_list, i):    # 가능한 인덱스 경우의 수를 뽑자
             # print(case)

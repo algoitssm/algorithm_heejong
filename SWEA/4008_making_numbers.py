@@ -1,5 +1,5 @@
 import sys
-from itertools import product
+# from itertools import product
 sys.stdin = open('input6.txt')
 
 
