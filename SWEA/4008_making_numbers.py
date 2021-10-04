@@ -27,24 +27,21 @@ def dfs(idx, result):
                 # result += nums[idx]
                 # print('result: ', result)
                 dfs(idx, result+nums[idx])
-                operators[i] += 1
             elif i == 1:
                 # result -= nums[idx]
                 # print('result: ', result)
                 dfs(idx, result-nums[idx])
-                operators[i] += 1
             elif i == 2:
                 # result *= nums[idx]
                 # print('result: ', result)
                 dfs(idx, result*nums[idx])
-                operators[i] += 1
             elif i == 3:
                 # result /= nums[idx]
                 # print('result: ', result)
                 if nums[idx] == 0:
                     continue
                 dfs(idx, int(result/nums[idx]))
-                operators[i] += 1
+            operators[i] += 1
 
 
 for tc in range(int(input())):

@@ -91,7 +91,6 @@ for tc in range(int(input())):
             charge_sum += tmp_sum
 
         else:
-
             for case in near_aps:
                 if case:
                     case_charge_max = 0
