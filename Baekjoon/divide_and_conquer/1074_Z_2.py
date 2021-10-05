@@ -1,4 +1,5 @@
 # https://www.acmicpc.net/problem/1074
+# TimeError
 
 
 def Z(r, c, n):

@@ -1,26 +1,31 @@
 # https://www.acmicpc.net/problem/2447
-from pandas import DataFrame
 
 
 def stamp(r, c, n):
 
-    if n == 3:
-        pass
+    if n == 1:
+        return
 
     step = n//3
 
-    if step == 1:
-        # print(char*n)
-        return
-
-    for r in range(0, n, step):
-        for c in range(0, n, step):
-            print(r, c)
-            stamp(r, c, step)
+    cnt = 1
+    for row in range(r, r+n, step):
+        for col in range(c, c+n, step):
+            stamp(row, col, step)
+            if cnt == 5:
+                # print('r,c:, ', row, col)
+                for inner_row in range(row, row+step):
+                    for inner_col in range(col, col+step):
+                        G[inner_row][inner_col] = ' '
+            cnt += 1
 
 
 N = int(input())
 
 G = [['*' for _ in range(N)] for _ in range(N)]
-print(DataFrame(G))
+# print(DataFrame(G))
+
 stamp(0, 0, N)
+
+for i in range(len(G)):
+    print(''.join(G[i]))
