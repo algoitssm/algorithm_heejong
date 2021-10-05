@@ -1,34 +1,31 @@
-def draw_star(n):
-    global Map
+# https://www.acmicpc.net/problem/2447
 
-    if n == 3:
-        Map[0][:3] = Map[2][:3] = [1]*3
-        Map[1][:3] = [1, 0, 1]
+
+def stamp(r, c, n):
+
+    if n == 1:
         return
 
-    a = n//3
-    draw_star(n//3)
-    for i in range(3):
-        for j in range(3):
-            if i == 1 and j == 1:
-                continue
-            for k in range(a):
-                Map[a*i+k][a*j:a*(j+1)] = Map[k][:a]  # 핵심 아이디어
+    step = n//3
+
+    cnt = 1
+    for row in range(r, r+n, step):
+        for col in range(c, c+n, step):
+            stamp(row, col, step)
+            if cnt == 5:
+                # print('r,c:, ', row, col)
+                for inner_row in range(row, row+step):
+                    for inner_col in range(col, col+step):
+                        G[inner_row][inner_col] = ' '
+            cnt += 1
 
 
 N = int(input())
 
-# 메인 데이터 선언
-Map = [[0 for i in range(N)] for i in range(N)]
+G = [['*' for _ in range(N)] for _ in range(N)]
+# print(DataFrame(G))
 
-draw_star(N)
+stamp(0, 0, N)
 
-# print(Map)
-
-for i in Map:
-    for j in i:
-        if j:
-            print('*', end='')
-        else:
-            print(' ', end='')
-    print()
+for i in range(len(G)):
+    print(''.join(G[i]))
