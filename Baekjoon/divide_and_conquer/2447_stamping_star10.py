@@ -1,26 +1,34 @@
-# https://www.acmicpc.net/problem/2447
-from pandas import DataFrame
-
-
-def stamp(r, c, n):
+def draw_star(n):
+    global Map
 
     if n == 3:
-        pass
-
-    step = n//3
-
-    if step == 1:
-        # print(char*n)
+        Map[0][:3] = Map[2][:3] = [1]*3
+        Map[1][:3] = [1, 0, 1]
         return
 
-    for r in range(0, n, step):
-        for c in range(0, n, step):
-            print(r, c)
-            stamp(r, c, step)
+    a = n//3
+    draw_star(n//3)
+    for i in range(3):
+        for j in range(3):
+            if i == 1 and j == 1:
+                continue
+            for k in range(a):
+                Map[a*i+k][a*j:a*(j+1)] = Map[k][:a]  # 핵심 아이디어
 
 
 N = int(input())
 
-G = [['*' for _ in range(N)] for _ in range(N)]
-print(DataFrame(G))
-stamp(0, 0, N)
+# 메인 데이터 선언
+Map = [[0 for i in range(N)] for i in range(N)]
+
+draw_star(N)
+
+# print(Map)
+
+for i in Map:
+    for j in i:
+        if j:
+            print('*', end='')
+        else:
+            print(' ', end='')
+    print()
