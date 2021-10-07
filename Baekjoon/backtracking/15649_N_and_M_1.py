@@ -1,7 +1,7 @@
 # https://www.acmicpc.net/problem/15649
 
 
-def perm(depth):
+def recursive(depth):
 
     if depth == M:
         print(*ans)
@@ -11,7 +11,7 @@ def perm(depth):
         if not visited[i]:
             visited[i] = 1
             ans.append(i+1)
-            perm(depth+1)
+            recursive(depth+1)
             visited[i] = 0
             ans.pop()
 
@@ -22,4 +22,4 @@ nums = [n for n in range(1, N+1)]
 
 ans = []
 visited = [0] * N
-perm(0)
+recursive(0)

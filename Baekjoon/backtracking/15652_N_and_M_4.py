@@ -1,4 +1,4 @@
-# https://www.acmicpc.net/problem/15650
+# https://www.acmicpc.net/problem/15652
 
 
 def recursive(depth, k):
@@ -8,12 +8,9 @@ def recursive(depth, k):
         return
 
     for i in range(k, N):
-        if not visited[i]:
-            visited[i] = 1
-            ans.append(i+1)
-            recursive(depth+1, i)
-            visited[i] = 0
-            ans.pop()
+        ans.append(i+1)
+        recursive(depth+1, i)
+        ans.pop()
 
 
 N, M = map(int, input().split())
