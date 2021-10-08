@@ -18,5 +18,4 @@ N, M = map(int, input().split())
 nums = [n for n in range(1, N+1)]
 
 ans = []
-visited = [0] * N
 recursive(0, 0)
