@@ -20,14 +20,12 @@ for tc in range(int(input())):
     b_boxes = [[] for _ in range(len(b_list))]      # B 창구별 소요시간
     b_waiting_queue = []                            # B 창구 대기열
 
-    finished = [0 for _ in range(K)]            # 손님이 정비까지 끝냈는지 확인 (for 반복문 종료)
+    finished = [0 for _ in range(K)]            # 손님이 정비까지 끝냈는지 확인 (반복문 종료)
 
     time = 0
     while True:
         if all(finished):                           # 모두 정비를 끝 마쳤으면 종료
             break
-
-        # print('time: ', time)
 
         for person_idx, t in enumerate(t_list):     # t_list를 순회하면서
             if t == time:                           # 해당시간의 사람을
@@ -69,17 +67,7 @@ for tc in range(int(input())):
                     b_boxes[idx] = [person_idx, b_list[idx]]    # 그 창구에 투입
                     customer_visit[person_idx][1] = idx     # 해당 손님 B 창구번호 저장
 
-        # print('a_queue: ', a_waiting_queue)
-        # print('a_boxes: ', a_boxes)
-
-        # print('b_queue: ', b_waiting_queue)
-        # print('b_boxes: ', b_boxes)
-
-        # print('customer_visit: ', customer_visit)
-        # print('-------')
         time += 1
-
-    # print(customer_visit)
 
     ans = 0
     for idx in range(K):        # 손님 전체 순회
